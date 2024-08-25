@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-EVENTS</title>
+</head>
+<body>
+    <h2>Amazing Images</h2>
+    <ul id="images">  
+        <li><img id="owl" width="200px" 
+            src="https://img.freepik.com/free-photo/brown-owl-sitting-gray-post_209690-111.jpg?uid=R128523501&ga=GA1.1.218255489.1723618729&semt=ais_hybrid">
+        </li>
+        <li><img id="chatrapati" width="200px" 
+            src="https://img.freepik.com/premium-photo/shivaji-wallpaper_1016105-72.jpg?uid=R128523501&ga=GA1.1.218255489.1723618729&semt=ais_hybrid">
+        </li>
+        <li><img id="pray" width="200px" 
+            src="https://img.freepik.com/free-photo/silhouette-girl-praying-beautiful-sky-background_1150-7178.jpg?uid=R128523501&ga=GA1.1.218255489.1723618729&semt=ais_hybrid">
+        </li>
+        <li><img id="farm" width="200px" 
+            src="https://img.freepik.com/free-photo/detail-rice-plant-sunset-valencia-with-plantation-out-focus-rice-grains-plant-seed_181624-25838.jpg?uid=R128523501&ga=GA1.1.218255489.1723618729&semt=ais_hybrid">
+        </li>
+        <li><a style="color: black;" id="google" href="https://www.google.com/">google</a></li>
+    </ul>
+</body>
+<script>
+
+    /* Need To Learn
+    //type,timestamp,defaultPrevented,
+    //target,toElement , srcElement(imp) , currentTarget 
+    //client position , screenx , screen y 
+    //altKey , ctrlKey , shiftKey , keyCode , */
+
+    /*document.getElementById('owl').onclick = function() {
+        alert('Owl Clicked')//OnClick gives less festures
+    }*/
+   //Default parameter is false(eventPropogation) -> EventBubbling 
+   //
+   /*document.getElementById('owl').addEventListener('click',function(){
+    alert('Owl Clicked')
+   },false)
+*/
+   //attachEvent()
+   //JQUERY 
+   /*Event Propogation*/
+    /*document.getElementById('images').addEventListener('click',function(e){
+        console.log('Clicked on the ul');
+    },true)*/
+    /*document.getElementById('owl').addEventListener('click',function(e){
+        console.log('Clicked on owl')
+        //e.stopImmediatePropagation()
+    },true)//We use true or false for the capturing
+    
+    document.getElementById('farm').addEventListener('click',function(e){
+        e.preventDefault()
+        console.log("Farm Clicked")
+    })*/
+   //Parent node is used to check whole li body at a time
+   document.querySelector('#images').addEventListener('click',function(e){
+    //console.log(e.target.parentNode);
+    console.log(e.target.tagName);
+    if (e.target.tagName == 'IMG') {
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+    }
+    /*let removeIt = e.target.parentNode
+    removeIt.remove()*/
+   },false)
+</script>
+</html>
